@@ -1,4 +1,5 @@
 import type { Category, Listing } from "@/types/domain";
+import { agroCategories } from "@/lib/agro-categories";
 
 export const categories: Category[] = [
   { id: "cat-autos", name: "Autos", slug: "autos", description: "Unidades urbanas y familiares.", icon: "car" },
@@ -8,7 +9,17 @@ export const categories: Category[] = [
   { id: "cat-agro", name: "Agro", slug: "agro", description: "Soluciones productivas.", icon: "sprout" },
   { id: "cat-maquinaria", name: "Maquinaria agrícola", slug: "maquinaria-agricola", description: "Equipos para campaña.", icon: "tractor" },
   { id: "cat-implementos", name: "Implementos", slug: "implementos", description: "Herramientas e implementos.", icon: "wrench" },
+  ...agroCategories.map((category, index) => ({
+    id: `cat-agro-${category.slug}`,
+    name: category.name,
+    slug: category.slug,
+    description: "Categoría de línea agro.",
+    icon: "tractor",
+    sort_order: 20 + index,
+  })),
 ];
+
+export const homeCategories = categories.slice(0, 7);
 
 export const demoListings: Listing[] = [
   {

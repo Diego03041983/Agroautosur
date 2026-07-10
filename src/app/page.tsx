@@ -5,7 +5,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { ListingCard } from "@/components/listing-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { categories } from "@/lib/demo-data";
+import { homeCategories } from "@/lib/demo-data";
 import { getPublishedListings } from "@/lib/listings";
 import { formatListingPrices, whatsappUrl } from "@/lib/utils";
 
@@ -79,7 +79,7 @@ export default async function Home() {
             </Link>
           </div>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-7">
-            {categories.map((category) => (
+            {homeCategories.map((category) => (
               <Link key={category.id} href={`/publicaciones?categoria=${category.slug}`} className="rounded-xl border border-[#152018]/10 bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-[#1f6b43]/35 hover:shadow-lg">
                 <p className="text-sm font-black text-[#152018]">{category.name}</p>
                 <p className="mt-1 text-xs leading-5 text-[#667062]">{category.description}</p>
