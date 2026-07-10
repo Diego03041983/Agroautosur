@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, BadgeDollarSign, Building2, Calculator, CheckCircle2, Gauge, GitCompareArrows, MapPin, SearchCheck, ShieldCheck } from "lucide-react";
+import { ArrowRight, BadgeDollarSign, Building2, Calculator, CheckCircle2, Gauge, GitCompareArrows, MapPin, Search, SearchCheck, ShieldCheck } from "lucide-react";
 import { BrandLogo } from "@/components/brand-logo";
 import { ListingCard } from "@/components/listing-card";
-import { SearchPanel } from "@/components/search-panel";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { categories } from "@/lib/demo-data";
@@ -18,23 +17,28 @@ export default async function Home() {
     <>
       <SiteHeader />
       <main className="aas-surface">
-        <section className="relative overflow-hidden bg-[#121b15] text-white">
-          <div className="absolute inset-0 opacity-90 [background:linear-gradient(105deg,#101713_0%,rgba(16,23,19,0.94)_38%,rgba(16,23,19,0.58)_68%,rgba(16,23,19,0.16)_100%),url('/brand/agroautosur-hero-bg.png')] bg-cover bg-[center_right]" />
+        <section className="relative min-h-[calc(100svh-6.5rem)] overflow-hidden bg-[#121b15] text-white sm:min-h-[620px]">
+          <div className="absolute inset-0 opacity-95 [background:linear-gradient(180deg,rgba(16,23,19,0.42)_0%,rgba(16,23,19,0.82)_54%,#101713_100%),url('/brand/agroautosur-hero-bg.png')] bg-cover bg-[62%_center] sm:[background:linear-gradient(105deg,#101713_0%,rgba(16,23,19,0.94)_38%,rgba(16,23,19,0.58)_68%,rgba(16,23,19,0.16)_100%),url('/brand/agroautosur-hero-bg.png')] sm:bg-[center_right]" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f3f5ef] to-transparent" />
-          <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 md:pb-20 md:pt-16 lg:px-8">
-            <div className="max-w-5xl">
-              <BrandLogo variant="light" className="mb-5 w-64 max-w-full" priority />
+          <div className="relative mx-auto flex min-h-[calc(100svh-6.5rem)] max-w-7xl items-end px-4 pb-10 pt-8 sm:min-h-[620px] sm:items-center sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
+            <div className="max-w-3xl">
+              <BrandLogo variant="light" className="mb-5 hidden w-64 max-w-full sm:block" priority />
               <div className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-3 py-1.5 text-xs font-black uppercase tracking-[0.16em] text-[#f1d382] backdrop-blur">
                 <ShieldCheck size={16} /> Te ayudamos a comprar mejor
               </div>
-              <h1 className="mt-5 max-w-3xl font-[var(--font-slab)] text-[2.55rem] font-black leading-[1.02] tracking-tight sm:text-6xl md:text-7xl">
+              <h1 className="mt-5 max-w-3xl font-[var(--font-slab)] text-[2.45rem] font-black leading-[1.02] tracking-tight sm:text-6xl md:text-7xl">
                 Autos, pickups y soluciones agro
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/78 sm:text-lg sm:leading-8">
                 Encontrá una buena opción, compará datos importantes y avanzá con financiación, permuta o venta asistida.
               </p>
-              <div className="mt-8 max-w-6xl">
-                <SearchPanel />
+              <div className="mt-7 grid gap-3 sm:flex sm:flex-wrap">
+                <Link href="/publicaciones" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#d6a82f] px-5 text-sm font-black text-[#152018] shadow-[0_18px_38px_rgba(214,168,47,0.28)]">
+                  Buscar publicaciones <Search size={18} />
+                </Link>
+                <Link href="/vender" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg border border-white/16 bg-white/10 px-5 text-sm font-black text-white backdrop-blur transition hover:bg-white/16">
+                  Publicar mi unidad <ArrowRight size={18} />
+                </Link>
               </div>
               <div className="mt-5 grid gap-2 text-sm font-bold text-white/78 sm:flex sm:flex-wrap">
                 {["Vendé con alguien que te acompañe", "Compará opciones de financiación", "Decinos qué buscás y lo seguimos"].map((claim) => (
@@ -44,6 +48,23 @@ export default async function Home() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="mx-auto -mt-4 max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative z-10 grid gap-3 rounded-xl border border-[#152018]/10 bg-white p-3 shadow-[0_18px_46px_rgba(21,32,24,0.14)] sm:grid-cols-[1fr_auto] sm:items-center sm:p-4">
+            <div className="flex items-center gap-3">
+              <span className="grid size-11 shrink-0 place-items-center rounded-lg bg-[#edf4e8] text-[#1f6b43]">
+                <Search size={21} />
+              </span>
+              <div>
+                <p className="text-sm font-black text-[#152018]">Búsqueda avanzada</p>
+                <p className="text-xs leading-5 text-[#667062]">Filtrá por rubro, marca, año, precio, financiación o permuta.</p>
+              </div>
+            </div>
+            <Link href="/publicaciones" className="rounded-lg bg-[#152018] px-4 py-3 text-center text-sm font-black text-white transition hover:bg-[#1f6b43]">
+              Ir al buscador
+            </Link>
           </div>
         </section>
 
