@@ -11,7 +11,11 @@
 
 ## Módulos previstos
 
-- Público: home, buscador, listado, ficha, contacto, vender, agencias y agro.
-- Admin: dashboard, login y futura gestión CRUD por recurso.
+- Público: home, buscador, listado, ficha, contacto, vender, agencias, agro, financiación, comparador, tasación y agrocanje.
+- Paneles: concesionaria, particular, proveedor agro, backoffice y analítica.
+- Admin: dashboard, login, CRM de leads y futura gestión CRUD por recurso.
 - Datos: Supabase Auth, PostgreSQL, Storage y RLS por rol/propiedad.
 - Leads: endpoint validado con Zod para consultas públicas.
+- Monetización: planes, suscripciones, facturas, pagos, destacados y renovaciones.
+- Agro: proveedores, catálogo, cotizaciones, documentos, comisiones y Agrocanje.
+- Analítica: eventos, métricas diarias, ventas declaradas, MRR, churn, GMV y comisiones.

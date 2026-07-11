@@ -23,14 +23,21 @@ export function SiteFooter() {
         <div className="grid content-start gap-2 text-sm text-white/75">
           <p className="mb-2 text-xs font-black uppercase tracking-[0.18em] text-[#d6a82f]">Vender</p>
           <Link href="/vender">Quiero vender</Link>
+          <Link href="/particular">Panel particular</Link>
           <Link href="/tasacion">Evaluar mi unidad</Link>
           <Link href="/agencias">Agencias</Link>
+          <Link href="/concesionaria">Panel concesionaria</Link>
           <Link href="/que-es-agroautosur">Qué es AgroAutoSur</Link>
         </div>
         <div className="rounded-lg border border-white/10 bg-white/[0.04] p-4">
           <p className="text-sm font-black">Canales comerciales</p>
           <p className="mt-2 text-sm leading-6 text-white/65">Cada consulta queda ordenada para responder mejor, comparar opciones y avanzar sin perder datos.</p>
-          <Link href="/admin">Panel administrativo</Link>
+          <div className="mt-3 grid gap-2 text-sm text-white/75">
+            <Link href="/proveedor-agro">Proveedor Agro</Link>
+            <Link href="/agrocanje">Agrocanje</Link>
+            <Link href="/admin">Panel administrativo</Link>
+            <Link href="/admin/backoffice">Backoffice</Link>
+          </div>
         </div>
       </div>
     </footer>

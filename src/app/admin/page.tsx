@@ -84,15 +84,15 @@ export default async function AdminPage() {
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {[
-            { title: "CRUD publicaciones", text: "Alta, edición, imágenes, estados y destacado.", Icon: ClipboardList },
-            { title: "Gestión de leads", text: "Estados comerciales, asignación y notas internas.", Icon: Users },
-            { title: "Storage de imágenes", text: "Bucket privado/público controlado por políticas.", Icon: Images },
-          ].map(({ title, text, Icon }) => (
-            <div key={title} className="rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
+            { title: "Backoffice", text: "Aprobaciones, usuarios, cobros, facturación y auditoría.", href: "/admin/backoffice", Icon: ClipboardList },
+            { title: "Gestión de leads", text: "Estados comerciales, asignación y notas internas.", href: "/admin/leads", Icon: Users },
+            { title: "Analítica", text: "Tráfico, conversión, MRR, churn, GMV y comisiones.", href: "/admin/analitica", Icon: Images },
+          ].map(({ title, text, href, Icon }) => (
+            <Link key={title} href={href} className="rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-[#1f6b43]/35">
               <Icon className="text-[#1f6b43]" />
               <h2 className="mt-4 text-xl font-black">{title}</h2>
               <p className="mt-2 text-sm leading-6 text-[#667062]">{text}</p>
-            </div>
+            </Link>
           ))}
         </div>
         <div className="mt-8 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">

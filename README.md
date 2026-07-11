@@ -41,10 +41,13 @@ NEXT_PUBLIC_WHATSAPP_PHONE=
 2. Ejecutar `supabase/migrations/0001_initial_schema.sql` en SQL Editor o con Supabase CLI.
 3. Ejecutar `supabase/migrations/0002_lead_crm_context.sql`.
 4. Ejecutar `supabase/migrations/0003_bimonetary_prices.sql`.
-5. Ejecutar `supabase/seed.sql` para cargar categorías, marcas, publicaciones y leads demo.
-6. Crear un bucket de Storage para imágenes, por ejemplo `listing-images`.
-7. Configurar Supabase Auth y crear usuarios operativos.
-8. Insertar filas en `profiles` y `users_roles` con roles `super_admin`, `admin`, `agency` o `seller`.
+5. Ejecutar `supabase/migrations/0004_user_seller_flows.sql`.
+6. Ejecutar `supabase/migrations/0005_agro_categories.sql`.
+7. Ejecutar `supabase/migrations/0006_platform_expansion.sql`.
+8. Ejecutar `supabase/seed.sql` para cargar categorías, marcas, publicaciones y leads demo.
+9. Crear un bucket de Storage para imágenes, por ejemplo `listing-images`.
+10. Configurar Supabase Auth y crear usuarios operativos.
+11. Insertar filas en `profiles` y `users_roles` con roles `super_admin`, `admin`, `agency` o `seller`.
 
 ## Arquitectura
 
@@ -67,6 +70,13 @@ Rutas iniciales:
 - `/comparar`: comparador inicial de publicaciones.
 - `/financiacion`: cotizador preliminar con opciones simuladas.
 - `/tasacion`: herramienta de evaluación inicial para vendedores, con rango orientativo y posterior lead comercial.
+- `/cuenta`: registro/login de usuarios.
+- `/concesionaria`: panel base para agencias y concesionarias.
+- `/particular`: panel base para vendedores particulares.
+- `/proveedor-agro`: panel base para proveedores agro.
+- `/agrocanje`: módulo base de operaciones en toneladas.
+- `/admin/backoffice`: mapa operativo para aprobaciones, usuarios, cobros, moderación, reportes y auditoría.
+- `/admin/analitica`: base de métricas de tráfico, conversión, MRR, churn, GMV y comisiones.
 
 ## Seguridad
 
@@ -78,6 +88,10 @@ Rutas iniciales:
 - Los precios son bimonetarios manuales: `price_usd` y `price_ars` se cargan por publicación. No hay conversión automática.
 - Owners/agencias pueden gestionar publicaciones propias según `owner_profile_id` u `organization_id`.
 - La service role key no se usa en cliente.
+
+## Alcance de plataforma
+
+Ver [docs/platform-scope.md](docs/platform-scope.md) para el diagnóstico de qué está hecho, qué falta y qué entidades se agregaron para soportar concesionarias, particulares, proveedores agro, backoffice, Agrocanje y analítica.
 
 ## Deploy en Vercel
 
