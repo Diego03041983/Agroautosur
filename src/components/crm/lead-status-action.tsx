@@ -31,7 +31,7 @@ export function LeadStatusAction({
   }
 
   return (
-    <label className="grid gap-1.5 text-sm font-bold">
+    <label className="grid gap-1.5 text-xs font-bold">
       Estado comercial
       <select
         value={status}
@@ -41,7 +41,7 @@ export function LeadStatusAction({
           setStatus(nextStatus);
           save(nextStatus);
         }}
-        className="aas-field"
+        className="aas-admin-field"
       >
         {leadStatuses.map((item) => (
           <option key={item} value={item}>
@@ -49,13 +49,13 @@ export function LeadStatusAction({
           </option>
         ))}
       </select>
-      <span className="mt-3">Responsable asignado</span>
+      <span className="mt-2">Responsable asignado</span>
       <input
         value={assignedTo}
         onChange={(event) => setAssignedTo(event.target.value)}
         onBlur={() => save(status, assignedTo)}
         placeholder="UUID del perfil responsable"
-        className="aas-field"
+        className="aas-admin-field"
       />
     </label>
   );

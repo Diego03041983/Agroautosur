@@ -26,21 +26,28 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
     <>
       <SiteHeader />
       <AdminNav />
-      <main className="aas-surface mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[1fr_0.55fr] lg:px-8">
-        <section className="grid gap-6">
-          <div className="rounded-2xl bg-[#101713] p-5 text-white shadow-[0_20px_70px_rgba(21,32,24,0.18)] sm:p-8">
-            <Link href="/admin/leads" className="text-sm font-black text-[#d6a82f]">← Volver a leads</Link>
-            <div className="mt-5 flex flex-wrap gap-2">
+      <main className="aas-surface mx-auto grid w-full max-w-7xl gap-4 px-4 py-5 sm:px-6 lg:grid-cols-[1fr_360px] lg:px-8">
+        <section className="grid gap-4">
+          <div className="rounded-lg border border-[#152018]/10 bg-white p-4 shadow-sm">
+            <div className="flex flex-col justify-between gap-3 md:flex-row md:items-start">
+              <div>
+                <Link href="/admin/leads" className="text-xs font-black text-[#1f6b43]">Volver a leads</Link>
+                <h1 className="mt-2 text-2xl font-black tracking-tight text-[#152018] sm:text-3xl">{lead.full_name}</h1>
+                <p className="mt-1 max-w-2xl text-sm text-[#667062]">
+                  {leadTypeLabels[lead.lead_type]} registrada desde {lead.source_label ?? lead.source_path ?? "sitio público"}.
+                </p>
+              </div>
+              <a href={whatsappHref} target="_blank" rel="noreferrer" className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#1f6b43] px-3 text-xs font-black text-white">
+                WhatsApp <MessageCircle size={14} />
+              </a>
+            </div>
+            <div className="mt-3 flex flex-wrap gap-2">
               <LeadStatusBadge status={lead.status} />
               <LeadTypeBadge type={lead.lead_type} />
             </div>
-            <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">{lead.full_name}</h1>
-            <p className="mt-3 max-w-2xl text-white/66">
-              {leadTypeLabels[lead.lead_type]} registrada desde {lead.source_label ?? lead.source_path ?? "sitio público"}.
-            </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-3 md:grid-cols-2">
             <InfoCard title="Datos de contacto">
               <p className="flex items-center gap-2"><Phone size={17} className="text-[#1f6b43]" /> {lead.phone}</p>
               <p className="flex items-center gap-2"><Mail size={17} className="text-[#1f6b43]" /> {lead.email ?? "Email no informado"}</p>
@@ -93,10 +100,11 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
         </section>
 
         <aside className="grid content-start gap-4 lg:sticky lg:top-24">
-          <div className="rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
+          <div className="rounded-lg border border-[#152018]/10 bg-white p-4 shadow-sm">
+            <p className="mb-3 text-[11px] font-black uppercase tracking-[0.16em] text-[#1f6b43]">Gestión</p>
             <LeadStatusAction leadId={lead.id} currentStatus={lead.status} currentAssignedTo={lead.assigned_to} />
-            <a href={whatsappHref} target="_blank" rel="noreferrer" className="mt-4 inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#1f6b43] px-4 text-sm font-black text-white">
-              Abrir WhatsApp <MessageCircle size={18} />
+            <a href={whatsappHref} target="_blank" rel="noreferrer" className="mt-3 inline-flex h-9 w-full items-center justify-center gap-2 rounded-md bg-[#1f6b43] px-3 text-xs font-black text-white">
+              Abrir WhatsApp <MessageCircle size={14} />
             </a>
           </div>
           <LeadNoteForm leadId={lead.id} />
@@ -108,9 +116,9 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
 
 function InfoCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
-      <h2 className="text-xl font-black">{title}</h2>
-      <div className="mt-4 grid gap-2 text-sm text-[#4d574c]">{children}</div>
+    <div className="rounded-lg border border-[#152018]/10 bg-white p-4 shadow-sm">
+      <h2 className="text-base font-black">{title}</h2>
+      <div className="mt-3 grid gap-2 text-sm text-[#4d574c]">{children}</div>
     </div>
   );
 }

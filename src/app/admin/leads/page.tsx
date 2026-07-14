@@ -31,23 +31,23 @@ export default async function AdminLeadsPage({
     <>
       <SiteHeader />
       <AdminNav />
-      <main className="aas-surface mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+      <main className="aas-surface mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
-            <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">CRM interno</p>
-            <h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">Bandeja de leads</h1>
-            <p className="mt-2 max-w-2xl text-[#667062]">
+            <p className="text-[11px] font-black uppercase tracking-[0.16em] text-[#1f6b43]">CRM interno</p>
+            <h1 className="mt-1 text-2xl font-black tracking-tight sm:text-3xl">Bandeja de leads</h1>
+            <p className="mt-1 max-w-2xl text-sm text-[#667062]">
               Todas las consultas públicas entran acá para clasificar, contactar, asignar responsable, financiar, negociar y cerrar.
             </p>
           </div>
-          <Link href="/admin" className="rounded-lg border border-[#152018]/12 bg-white px-4 py-3 text-center text-sm font-black">
+          <Link href="/admin" className="rounded-md border border-[#152018]/12 bg-white px-3 py-2 text-center text-xs font-black">
             Volver al dashboard
           </Link>
         </div>
 
-        <form className="mt-8 grid gap-3 rounded-xl border border-[#152018]/10 bg-white p-4 shadow-sm md:grid-cols-6">
+        <form className="mt-4 grid gap-2 rounded-lg border border-[#152018]/10 bg-white p-3 shadow-sm md:grid-cols-6">
           <FilterLabel label="Estado">
-            <select name="status" defaultValue={filters.status} className="aas-field">
+            <select name="status" defaultValue={filters.status} className="aas-admin-field">
               <option value="">Todos</option>
               {leadStatuses.map((status) => (
                 <option key={status} value={status}>
@@ -57,7 +57,7 @@ export default async function AdminLeadsPage({
             </select>
           </FilterLabel>
           <FilterLabel label="Tipo">
-            <select name="lead_type" defaultValue={filters.lead_type} className="aas-field">
+            <select name="lead_type" defaultValue={filters.lead_type} className="aas-admin-field">
               <option value="">Todos</option>
               {leadTypes.map((type) => (
                 <option key={type} value={type}>
@@ -67,7 +67,7 @@ export default async function AdminLeadsPage({
             </select>
           </FilterLabel>
           <FilterLabel label="Publicación">
-            <select name="listing_id" defaultValue={filters.listing_id ?? ""} className="aas-field">
+            <select name="listing_id" defaultValue={filters.listing_id ?? ""} className="aas-admin-field">
               <option value="">Todas</option>
               {listings.map((listing) => (
                 <option key={listing.id} value={listing.id}>
@@ -77,36 +77,36 @@ export default async function AdminLeadsPage({
             </select>
           </FilterLabel>
           <FilterLabel label="Responsable">
-            <input name="assigned_to" defaultValue={filters.assigned_to ?? ""} placeholder="UUID responsable" className="aas-field" />
+            <input name="assigned_to" defaultValue={filters.assigned_to ?? ""} placeholder="UUID responsable" className="aas-admin-field" />
           </FilterLabel>
           <FilterLabel label="Desde">
-            <input name="date_from" type="date" defaultValue={filters.date_from ?? ""} className="aas-field" />
+            <input name="date_from" type="date" defaultValue={filters.date_from ?? ""} className="aas-admin-field" />
           </FilterLabel>
           <FilterLabel label="Hasta">
-            <input name="date_to" type="date" defaultValue={filters.date_to ?? ""} className="aas-field" />
+            <input name="date_to" type="date" defaultValue={filters.date_to ?? ""} className="aas-admin-field" />
           </FilterLabel>
           <div className="flex gap-2 md:col-span-6">
-            <button className="min-h-12 rounded-lg bg-[#183d2a] px-5 text-sm font-black text-white">Filtrar leads</button>
-            <Link href="/admin/leads" className="inline-flex min-h-12 items-center rounded-lg border border-[#152018]/12 px-5 text-sm font-black">
+            <button className="h-9 rounded-md bg-[#183d2a] px-4 text-xs font-black text-white">Filtrar</button>
+            <Link href="/admin/leads" className="inline-flex h-9 items-center rounded-md border border-[#152018]/12 px-4 text-xs font-black">
               Limpiar
             </Link>
           </div>
         </form>
 
-        <div className="mt-6 overflow-hidden rounded-xl border border-[#152018]/10 bg-white shadow-sm">
+        <div className="mt-4 overflow-hidden rounded-lg border border-[#152018]/10 bg-white shadow-sm">
           {leads.length ? (
             <div className="divide-y divide-[#152018]/10">
               {leads.map((lead) => (
-                <div key={lead.id} className="grid gap-4 p-4 lg:grid-cols-[1.25fr_0.9fr_0.75fr_auto] lg:items-center">
+                <div key={lead.id} className="grid gap-3 p-3 lg:grid-cols-[1.25fr_0.9fr_0.75fr_auto] lg:items-center">
                   <div>
                     <div className="flex flex-wrap gap-2">
                       <LeadStatusBadge status={lead.status} />
                       <LeadTypeBadge type={lead.lead_type} />
                     </div>
-                    <Link href={`/admin/leads/${lead.id}`} className="mt-3 block text-xl font-black hover:text-[#1f6b43]">
+                    <Link href={`/admin/leads/${lead.id}`} className="mt-2 block text-base font-black hover:text-[#1f6b43]">
                       {lead.full_name}
                     </Link>
-                    <p className="mt-1 text-sm text-[#667062]">{lead.message ?? "Sin mensaje inicial"}</p>
+                    <p className="mt-1 line-clamp-1 text-xs text-[#667062]">{lead.message ?? "Sin mensaje inicial"}</p>
                   </div>
                   <div className="grid gap-1 text-sm">
                     <p className="font-black">{lead.listing?.title ?? lead.source_label ?? "Consulta sin publicación"}</p>
@@ -117,10 +117,10 @@ export default async function AdminLeadsPage({
                     <span className="flex items-center gap-2"><UserRound size={16} /> {lead.assigned_profile?.full_name ?? "Sin responsable"}</span>
                   </div>
                   <div className="flex gap-2 lg:justify-end">
-                    <a href={leadWhatsappUrl({ fullName: lead.full_name, listingTitle: lead.listing?.title, leadType: lead.lead_type })} target="_blank" rel="noreferrer" className="grid size-11 place-items-center rounded-lg bg-[#1f6b43] text-white" aria-label="Abrir WhatsApp">
+                    <a href={leadWhatsappUrl({ fullName: lead.full_name, listingTitle: lead.listing?.title, leadType: lead.lead_type })} target="_blank" rel="noreferrer" className="grid size-9 place-items-center rounded-md bg-[#1f6b43] text-white" aria-label="Abrir WhatsApp">
                       <MessageCircle size={18} />
                     </a>
-                    <Link href={`/admin/leads/${lead.id}`} className="inline-flex min-h-11 items-center rounded-lg bg-[#d6a82f] px-4 text-sm font-black text-[#152018]">
+                    <Link href={`/admin/leads/${lead.id}`} className="inline-flex h-9 items-center rounded-md bg-[#d6a82f] px-3 text-xs font-black text-[#152018]">
                       Gestionar
                     </Link>
                   </div>
@@ -128,10 +128,10 @@ export default async function AdminLeadsPage({
               ))}
             </div>
           ) : (
-            <div className="p-10 text-center">
-              <SearchX className="mx-auto text-[#1f6b43]" size={44} />
-              <h2 className="mt-4 text-2xl font-black">No hay leads con esos filtros</h2>
-              <p className="mx-auto mt-2 max-w-md text-[#667062]">
+            <div className="p-8 text-center">
+              <SearchX className="mx-auto text-[#1f6b43]" size={34} />
+              <h2 className="mt-3 text-lg font-black">No hay leads con esos filtros</h2>
+              <p className="mx-auto mt-1 max-w-md text-sm text-[#667062]">
                 Probá limpiar filtros o revisá que los formularios públicos estén enviando consultas.
               </p>
             </div>

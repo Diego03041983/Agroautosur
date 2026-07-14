@@ -49,6 +49,29 @@ body {
   box-shadow: 0 0 0 4px rgba(31, 107, 67, 0.1);
 }
 
+.aas-admin-field {
+  min-height: 36px;
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid rgba(21, 32, 24, 0.16);
+  background: #ffffff;
+  padding: 0.45rem 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  color: #152018;
+  outline: none;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.aas-admin-field:focus {
+  border-color: rgba(31, 107, 67, 0.72);
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(31, 107, 67, 0.08);
+}
+
 .aas-search-field {
   min-height: 48px;
   width: 100%;
