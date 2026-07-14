@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BadgeDollarSign, ClipboardList, Images, MessageSquareText, ShieldCheck, TrendingUp, Users } from "lucide-react";
+import { AdminNav } from "@/components/admin-nav";
 import { SiteHeader } from "@/components/site-header";
 import { getLeadMetrics } from "@/lib/leads";
 import { getPublishedListings } from "@/lib/listings";
@@ -19,13 +20,16 @@ export default async function AdminPage() {
   return (
     <>
       <SiteHeader />
+      <AdminNav />
       <main className="aas-surface mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="rounded-2xl bg-[#101713] p-5 text-white shadow-[0_20px_70px_rgba(21,32,24,0.18)] sm:p-8">
           <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.18em] text-[#d6a82f]">Admin</p>
               <h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">Dashboard operativo</h1>
-              <p className="mt-2 max-w-2xl text-white/64">Base inicial para gestionar stock, leads, financiación y publicaciones destacadas con Supabase Auth y RLS.</p>
+              <p className="mt-2 max-w-2xl text-white/64">
+                Centro de control para leer la operación diaria: publicaciones activas, leads, consultas de financiación y módulos administrativos.
+              </p>
             </div>
             <Link href="/admin/login" className="rounded-lg bg-[#d6a82f] px-5 py-3 text-center text-sm font-black text-[#152018]">
               Login seguro
@@ -95,6 +99,13 @@ export default async function AdminPage() {
             </Link>
           ))}
         </div>
+        <section className="mt-8 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Funcionalidad del administrador</p>
+          <h2 className="mt-2 text-2xl font-black">Qué se gestiona desde este panel</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#667062]">
+            Este dashboard resume la salud comercial de AgroAutoSur. Desde acá se accede al CRM, al backoffice operativo y a la analítica. La autenticación y permisos por rol están modelados con Supabase, y el próximo paso es bloquear rutas según usuario administrativo.
+          </p>
+        </section>
         <div className="mt-8 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Tipos de consulta</p>
           <h2 className="mt-2 text-2xl font-black">Mapa de demanda comercial</h2>

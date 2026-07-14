@@ -12,6 +12,7 @@ export default function BackofficePage() {
         description="Mapa operativo para administrar la plataforma completa: actores, publicaciones, proveedores, cobros, reportes y trazabilidad."
         cards={backofficeCards}
         cta={{ label: "Ver analítica", href: "/admin/analitica" }}
+        admin
       />
       <section className="aas-surface border-t border-[#152018]/10 px-4 py-10 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">

@@ -11,6 +11,7 @@ export default function AnalyticsPage() {
       description="Base para medir el negocio completo: adquisición, consultas, ventas declaradas, monetización recurrente, operaciones agro y comisiones."
       cards={analyticsCards}
       cta={{ label: "Ver leads", href: "/admin/leads" }}
+      admin
     />
   );
 }

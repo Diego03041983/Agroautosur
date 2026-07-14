@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import { AdminNav } from "@/components/admin-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -9,6 +10,9 @@ type ModuleCard = {
   text: string;
   href: string;
   Icon: LucideIcon;
+  state?: string;
+  functionality?: string;
+  nextStep?: string;
 };
 
 export function ModuleDashboard({
@@ -17,16 +21,19 @@ export function ModuleDashboard({
   description,
   cards,
   cta,
+  admin = false,
 }: {
   eyebrow: string;
   title: string;
   description: string;
   cards: ModuleCard[];
   cta?: { label: string; href: string };
+  admin?: boolean;
 }) {
   return (
     <>
       <SiteHeader />
+      {admin ? <AdminNav /> : null}
       <main className="aas-surface">
         <section className="bg-[#101713] text-white">
           <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
@@ -45,17 +52,27 @@ export function ModuleDashboard({
           </div>
         </section>
         <section className="mx-auto grid max-w-7xl gap-4 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
-          {cards.map(({ title: cardTitle, text, href, Icon }) => (
+          {cards.map(({ title: cardTitle, text, href, Icon, state, functionality, nextStep }) => (
             <Link
               key={cardTitle}
               href={href}
               className="group rounded-xl border border-[#152018]/10 bg-white p-5 shadow-[0_14px_42px_rgba(21,32,24,0.08)] transition hover:-translate-y-0.5 hover:border-[#1f6b43]/35 hover:shadow-[0_24px_60px_rgba(21,32,24,0.14)]"
             >
-              <span className="grid size-12 place-items-center rounded-lg bg-[#edf4e8] text-[#1f6b43] transition group-hover:bg-[#1f6b43] group-hover:text-white">
-                <Icon size={23} />
-              </span>
+              <div className="flex items-start justify-between gap-3">
+                <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-[#edf4e8] text-[#1f6b43] transition group-hover:bg-[#1f6b43] group-hover:text-white">
+                  <Icon size={23} />
+                </span>
+                {state ? <span className="rounded-full bg-[#fff5d8] px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.08em] text-[#6f4e00]">{state}</span> : null}
+              </div>
               <h2 className="mt-5 text-xl font-black text-[#152018]">{cardTitle}</h2>
               <p className="mt-2 text-sm leading-6 text-[#667062]">{text}</p>
+              {functionality ? (
+                <div className="mt-4 rounded-lg bg-[#f8faf6] p-3">
+                  <p className="text-[11px] font-black uppercase tracking-[0.12em] text-[#1f6b43]">Funcionalidad</p>
+                  <p className="mt-1 text-sm leading-5 text-[#4d574c]">{functionality}</p>
+                </div>
+              ) : null}
+              {nextStep ? <p className="mt-3 text-xs font-bold leading-5 text-[#8a9285]">Próximo paso: {nextStep}</p> : null}
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#1f6b43]">
                 Abrir módulo <ArrowRight size={16} />
               </span>

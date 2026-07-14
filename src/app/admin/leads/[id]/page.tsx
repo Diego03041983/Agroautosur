@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CalendarDays, Mail, MapPin, MessageCircle, Phone, UserRound } from "lucide-react";
+import { AdminNav } from "@/components/admin-nav";
 import { LeadStatusBadge, LeadTypeBadge } from "@/components/crm/lead-badge";
 import { LeadNoteForm } from "@/components/crm/lead-note-form";
 import { LeadStatusAction } from "@/components/crm/lead-status-action";
@@ -24,6 +25,7 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
   return (
     <>
       <SiteHeader />
+      <AdminNav />
       <main className="aas-surface mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 sm:px-6 lg:grid-cols-[1fr_0.55fr] lg:px-8">
         <section className="grid gap-6">
           <div className="rounded-2xl bg-[#101713] p-5 text-white shadow-[0_20px_70px_rgba(21,32,24,0.18)] sm:p-8">
@@ -35,6 +37,9 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
             <h1 className="mt-4 text-4xl font-black tracking-tight sm:text-5xl">{lead.full_name}</h1>
             <p className="mt-3 max-w-2xl text-white/66">
               {leadTypeLabels[lead.lead_type]} registrada desde {lead.source_label ?? lead.source_path ?? "sitio público"}.
+            </p>
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/58">
+              Funcionalidad: revisar contexto comercial, contactar por WhatsApp, cambiar estado, asignar responsable y dejar historial interno.
             </p>
           </div>
 

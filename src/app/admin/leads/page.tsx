@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendarDays, MessageCircle, SearchX, UserRound } from "lucide-react";
+import { AdminNav } from "@/components/admin-nav";
 import { LeadStatusBadge, LeadTypeBadge } from "@/components/crm/lead-badge";
 import { SiteHeader } from "@/components/site-header";
 import { getLeads } from "@/lib/leads";
@@ -29,13 +30,14 @@ export default async function AdminLeadsPage({
   return (
     <>
       <SiteHeader />
+      <AdminNav />
       <main className="aas-surface mx-auto w-full max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">CRM interno</p>
             <h1 className="mt-2 text-4xl font-black tracking-tight sm:text-5xl">Bandeja de leads</h1>
             <p className="mt-2 max-w-2xl text-[#667062]">
-              Todas las consultas públicas entran acá para clasificar, contactar, financiar, negociar y cerrar.
+              Todas las consultas públicas entran acá para clasificar, contactar, asignar responsable, financiar, negociar y cerrar.
             </p>
           </div>
           <Link href="/admin" className="rounded-lg border border-[#152018]/12 bg-white px-4 py-3 text-center text-sm font-black">
@@ -90,6 +92,14 @@ export default async function AdminLeadsPage({
             </Link>
           </div>
         </form>
+
+        <section className="mt-6 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
+          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Funcionalidad del CRM</p>
+          <h2 className="mt-2 text-2xl font-black">Seguimiento comercial de punta a punta</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#667062]">
+            Esta bandeja concentra leads de publicaciones, financiación, permutas, búsquedas específicas, vendedores y contactos generales. El objetivo es que ninguna consulta quede perdida: cada lead puede filtrarse, abrirse por WhatsApp, cambiar de estado y sumar notas internas.
+          </p>
+        </section>
 
         <div className="mt-6 overflow-hidden rounded-xl border border-[#152018]/10 bg-white shadow-sm">
           {leads.length ? (
