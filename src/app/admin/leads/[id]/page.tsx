@@ -38,9 +38,6 @@ export default async function LeadDetailPage({ params }: { params: Promise<{ id:
             <p className="mt-3 max-w-2xl text-white/66">
               {leadTypeLabels[lead.lead_type]} registrada desde {lead.source_label ?? lead.source_path ?? "sitio público"}.
             </p>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-white/58">
-              Funcionalidad: revisar contexto comercial, contactar por WhatsApp, cambiar estado, asignar responsable y dejar historial interno.
-            </p>
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">

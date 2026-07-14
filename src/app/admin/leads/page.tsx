@@ -93,14 +93,6 @@ export default async function AdminLeadsPage({
           </div>
         </form>
 
-        <section className="mt-6 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Funcionalidad del CRM</p>
-          <h2 className="mt-2 text-2xl font-black">Seguimiento comercial de punta a punta</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#667062]">
-            Esta bandeja concentra leads de publicaciones, financiación, permutas, búsquedas específicas, vendedores y contactos generales. El objetivo es que ninguna consulta quede perdida: cada lead puede filtrarse, abrirse por WhatsApp, cambiar de estado y sumar notas internas.
-          </p>
-        </section>
-
         <div className="mt-6 overflow-hidden rounded-xl border border-[#152018]/10 bg-white shadow-sm">
           {leads.length ? (
             <div className="divide-y divide-[#152018]/10">

@@ -52,7 +52,7 @@ export function ModuleDashboard({
           </div>
         </section>
         <section className="mx-auto grid max-w-7xl gap-4 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
-          {cards.map(({ title: cardTitle, text, href, Icon, state, functionality, nextStep }) => (
+          {cards.map(({ title: cardTitle, text, href, Icon, state }) => (
             <Link
               key={cardTitle}
               href={href}
@@ -66,13 +66,6 @@ export function ModuleDashboard({
               </div>
               <h2 className="mt-5 text-xl font-black text-[#152018]">{cardTitle}</h2>
               <p className="mt-2 text-sm leading-6 text-[#667062]">{text}</p>
-              {functionality ? (
-                <div className="mt-4 rounded-lg bg-[#f8faf6] p-3">
-                  <p className="text-[11px] font-black uppercase tracking-[0.12em] text-[#1f6b43]">Funcionalidad</p>
-                  <p className="mt-1 text-sm leading-5 text-[#4d574c]">{functionality}</p>
-                </div>
-              ) : null}
-              {nextStep ? <p className="mt-3 text-xs font-bold leading-5 text-[#8a9285]">Próximo paso: {nextStep}</p> : null}
               <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#1f6b43]">
                 Abrir módulo <ArrowRight size={16} />
               </span>

@@ -99,13 +99,6 @@ export default async function AdminPage() {
             </Link>
           ))}
         </div>
-        <section className="mt-8 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
-          <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Funcionalidad del administrador</p>
-          <h2 className="mt-2 text-2xl font-black">Qué se gestiona desde este panel</h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#667062]">
-            Este dashboard resume la salud comercial de AgroAutoSur. Desde acá se accede al CRM, al backoffice operativo y a la analítica. La autenticación y permisos por rol están modelados con Supabase, y el próximo paso es bloquear rutas según usuario administrativo.
-          </p>
-        </section>
         <div className="mt-8 rounded-xl border border-[#152018]/10 bg-white p-5 shadow-sm">
           <p className="text-sm font-black uppercase tracking-[0.18em] text-[#1f6b43]">Tipos de consulta</p>
           <h2 className="mt-2 text-2xl font-black">Mapa de demanda comercial</h2>
