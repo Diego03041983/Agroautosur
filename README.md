@@ -44,10 +44,11 @@ NEXT_PUBLIC_WHATSAPP_PHONE=
 5. Ejecutar `supabase/migrations/0004_user_seller_flows.sql`.
 6. Ejecutar `supabase/migrations/0005_agro_categories.sql`.
 7. Ejecutar `supabase/migrations/0006_platform_expansion.sql`.
-8. Ejecutar `supabase/seed.sql` para cargar categorías, marcas, publicaciones y leads demo.
-9. Crear un bucket de Storage para imágenes, por ejemplo `listing-images`.
-10. Configurar Supabase Auth y crear usuarios operativos.
-11. Insertar filas en `profiles` y `users_roles` con roles `super_admin`, `admin`, `agency` o `seller`.
+8. Ejecutar `supabase/migrations/0007_commercial_account_reorg.sql`.
+9. Ejecutar `supabase/seed.sql` para cargar categorías, marcas, publicaciones y leads demo.
+10. Crear un bucket de Storage para imágenes, por ejemplo `listing-images`.
+11. Configurar Supabase Auth y crear usuarios operativos.
+12. Insertar filas en `profiles` y `users_roles` con roles `super_admin`, `admin`, `agency` o `seller`.
 
 ## Arquitectura
 
@@ -71,10 +72,10 @@ Rutas iniciales:
 - `/financiacion`: cotizador preliminar con opciones simuladas.
 - `/tasacion`: herramienta de evaluación inicial para vendedores, con rango orientativo y posterior lead comercial.
 - `/cuenta`: registro/login de usuarios.
-- `/concesionaria`: panel base para agencias y concesionarias.
+- `/concesionaria`: panel base para agencias, concesionarias y empresas agro con stock/catálogo comercial.
 - `/particular`: panel base para vendedores particulares.
-- `/proveedor-agro`: panel base para proveedores agro.
-- `/agrocanje`: módulo base de operaciones en toneladas.
+- `/proveedor-agro`: redirige al panel comercial; proveedor agro es una vertical de organización, no un panel separado.
+- `/agrocanje`: redirige al panel comercial; Agrocanje es una modalidad de cobro habilitable por organización/publicación.
 - `/admin/backoffice`: mapa operativo para aprobaciones, usuarios, cobros, moderación, reportes y auditoría.
 - `/admin/analitica`: base de métricas de tráfico, conversión, MRR, churn, GMV y comisiones.
 
@@ -91,7 +92,7 @@ Rutas iniciales:
 
 ## Alcance de plataforma
 
-Ver [docs/platform-scope.md](docs/platform-scope.md) para el diagnóstico de qué está hecho, qué falta y qué entidades se agregaron para soportar concesionarias, particulares, proveedores agro, backoffice, Agrocanje y analítica.
+Ver [docs/platform-scope.md](docs/platform-scope.md) para el diagnóstico de qué está hecho, qué falta y qué entidades se agregaron para soportar cuentas comerciales, particulares, backoffice, Agrocanje como medio de cobro y analítica.
 
 ## Deploy en Vercel
 

@@ -33,8 +33,7 @@ export function SiteFooter() {
           <p className="text-sm font-black">Canales comerciales</p>
           <p className="mt-2 text-sm leading-6 text-white/65">Cada consulta queda ordenada para responder mejor, comparar opciones y avanzar sin perder datos.</p>
           <div className="mt-3 grid gap-2 text-sm text-white/75">
-            <Link href="/proveedor-agro">Proveedor Agro</Link>
-            <Link href="/agrocanje">Agrocanje</Link>
+            <Link href="/concesionaria">Panel comercial</Link>
             <Link href="/admin">Panel administrativo</Link>
             <Link href="/admin/backoffice">Backoffice</Link>
           </div>

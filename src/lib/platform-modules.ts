@@ -39,10 +39,10 @@ export const platformAudit = [
     missing: ["pagos", "edición completa", "métricas del aviso", "renovación"],
   },
   {
-    area: "Panel proveedor Agro",
-    status: "Base creada ahora",
-    done: ["Taxonomía agro", "estructura de catálogo", "solicitudes de cotización", "comisiones"],
-    missing: ["portal autenticado completo", "documentos gestionables", "flujo de oportunidades"],
+    area: "Proveedor Agro dentro de concesionaria",
+    status: "Reordenado",
+    done: ["Taxonomía agro", "estructura de catálogo", "solicitudes de cotización", "comisiones", "cuenta comercial unificada"],
+    missing: ["activar vertical agro por organización", "documentos gestionables", "flujo de oportunidades"],
   },
   {
     area: "Backoffice",
@@ -51,9 +51,9 @@ export const platformAudit = [
     missing: ["moderación visual", "reportes exportables", "auditoría completa", "cobros/facturación operativa"],
   },
   {
-    area: "Módulo Agrocanje",
-    status: "Base creada ahora",
-    done: ["Modelo de solicitud, toneladas, operador, entrega, liquidación y cierre"],
+    area: "Agrocanje como medio de cobro",
+    status: "Reordenado",
+    done: ["Modelo de solicitud, toneladas, operador, entrega, liquidación y cierre", "capacidad habilitable por organización/publicación"],
     missing: ["cotizador operativo", "contratos/documentos", "liquidación real"],
   },
   {
@@ -66,12 +66,14 @@ export const platformAudit = [
 
 export const dealerPanelCards = [
   { title: "Stock", text: "Publicaciones propias, estados, fotos, destacados y renovación.", href: "/publicaciones", Icon: Boxes, state: "Base", functionality: "Centraliza el inventario de la concesionaria para publicar, pausar, destacar o renovar unidades.", nextStep: "crear CRUD de stock por organización" },
+  { title: "Catálogo agro", text: "Equipos, repuestos, insumos, servicios y disponibilidad dentro de la misma cuenta comercial.", href: "/concesionaria", Icon: Store, state: "Base", functionality: "Integra proveedores agro como una vertical de concesionaria/empresa, no como panel separado.", nextStep: "activar catálogo por organización" },
   { title: "Vendedores", text: "Equipo comercial, asignación de leads y desempeño.", href: "/concesionaria", Icon: Users, state: "Diseñado", functionality: "Permite organizar vendedores, vincular responsables y medir seguimiento comercial.", nextStep: "alta y permisos de vendedores" },
   { title: "Leads", text: "Consultas por publicación, financiación, permuta y contacto.", href: "/admin/leads", Icon: UserCheck, state: "Operativo", functionality: "Recibe consultas del sitio, filtra por estado/tipo y permite accionar por WhatsApp.", nextStep: "segmentar leads por concesionaria" },
   { title: "Estadísticas", text: "Vistas, consultas, conversión y unidades con más demanda.", href: "/admin/analitica", Icon: BarChart3, state: "Base", functionality: "Define los indicadores que una agencia necesita para saber qué stock convierte mejor.", nextStep: "conectar tracking real" },
   { title: "Planes", text: "Suscripción, límites de stock, destacados incluidos y upgrades.", href: "/concesionaria", Icon: ClipboardList, state: "Modelado", functionality: "Relaciona cada cuenta con un plan, límites comerciales y beneficios activos.", nextStep: "activar cobro y upgrades" },
   { title: "Facturas", text: "Comprobantes, pagos pendientes y vencimientos.", href: "/concesionaria", Icon: ReceiptText, state: "Modelado", functionality: "Prepara la administración de comprobantes, vencimientos y pagos asociados a planes.", nextStep: "integrar proveedor de pagos" },
   { title: "Destacados", text: "Promociones por slot, fechas, inversión y rendimiento.", href: "/concesionaria", Icon: Megaphone, state: "Modelado", functionality: "Gestiona visibilidad paga o incluida dentro del plan comercial.", nextStep: "crear pantalla de compra de destacados" },
+  { title: "Agrocanje", text: "Modalidad de cobro en toneladas habilitable por concesionaria y por publicación.", href: "/concesionaria", Icon: Scale, state: "Modelado", functionality: "Permite aceptar agrocanje como forma de pago, cotizar toneladas, seguir entrega y cerrar liquidación.", nextStep: "activar cotizador por operación" },
 ];
 
 export const sellerPanelCards = [

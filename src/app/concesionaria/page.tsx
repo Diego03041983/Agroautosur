@@ -6,9 +6,9 @@ export const metadata = { title: "Panel concesionaria" };
 export default function DealerPanelPage() {
   return (
     <ModuleDashboard
-      eyebrow="Panel concesionaria"
-      title="Stock, equipo comercial, leads y monetización para agencias."
-      description="Superficie inicial para operar publicaciones, vendedores, estadísticas, planes, facturas y destacados desde una misma cuenta de organización."
+      eyebrow="Panel comercial"
+      title="Concesionarias, agencias y empresas agro en una misma cuenta."
+      description="Desde este panel una organización puede operar stock, catálogo agro, vendedores, leads, planes, facturas, destacados y modalidades de cobro como financiación, permuta o agrocanje."
       cards={dealerPanelCards}
       cta={{ label: "Ver CRM", href: "/admin/leads" }}
     />

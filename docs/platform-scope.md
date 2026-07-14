@@ -21,12 +21,12 @@ Ya existe:
 
 Falta profundizar:
 
-- Perfiles públicos de concesionarias, particulares y proveedores.
+- Perfiles públicos de cuentas comerciales, particulares y organizaciones agro.
 - Filtros conectados a búsqueda real por todos los parámetros.
 - SEO regional programático por ciudad, marca, categoría y operación.
 - Tracking de eventos de tráfico/conversión.
 
-### Panel concesionaria
+### Panel comercial / concesionaria
 
 Estado: base creada.
 
@@ -38,6 +38,8 @@ Ya existe:
 - Leads y CRM inicial.
 - Ruta base `/concesionaria`.
 - Entidades para miembros, planes, facturas, pagos, destacados y estadísticas.
+- Vertical agro integrada dentro de la cuenta comercial.
+- Medios de cobro por organización y por publicación, incluyendo Agrocanje.
 
 Falta construir:
 
@@ -46,6 +48,7 @@ Falta construir:
 - Vista de facturas y plan activo.
 - Compra/renovación de destacados.
 - Estadísticas reales por vendedor y publicación.
+- CRUD de catálogo agro cuando la organización venda equipos, repuestos, insumos o servicios.
 
 ### Panel particular
 
@@ -66,24 +69,6 @@ Falta construir:
 - Subida de imágenes/documentos.
 - Pagos/renovaciones reales.
 - Métricas visibles para el vendedor.
-
-### Panel proveedor Agro
-
-Estado: base creada.
-
-Ya existe:
-
-- Línea agro categorizada.
-- Ruta base `/proveedor-agro`.
-- Entidades para perfil proveedor, catálogo, cotizaciones, documentos y comisiones.
-
-Falta construir:
-
-- Onboarding de proveedor.
-- CRUD de catálogo.
-- Bandeja de solicitudes de cotización.
-- Gestión documental.
-- Liquidación de comisiones.
 
 ### Backoffice
 
@@ -106,15 +91,16 @@ Falta construir:
 - Reportes exportables.
 - Auditoría visual.
 
-### Módulo Agrocanje
+### Agrocanje como modalidad de cobro
 
-Estado: base creada.
+Estado: reordenado.
 
 Ya existe:
 
-- Ruta `/agrocanje`.
 - Entidades para solicitud, cotización en toneladas, operador, entrega, liquidación y cierre.
 - Historial de estados.
+- Capacidad de habilitar Agrocanje por organización.
+- Opciones de pago por publicación.
 
 Falta construir:
 
@@ -166,14 +152,16 @@ Incluye:
 - `business_metrics_monthly`
 - `moderation_cases`
 - `audit_logs`
+- `organization_payment_methods`
+- `listing_payment_options`
 
 ## Orden recomendado de implementación
 
 1. Proteger rutas con middleware y roles.
 2. Completar CRUD de publicaciones y seller submissions.
-3. Panel concesionaria: stock, vendedores y leads.
+3. Panel comercial: stock, catálogo agro, vendedores, medios de cobro y leads.
 4. Panel particular: mis publicaciones, edición, pagos y métricas.
 5. Backoffice: aprobaciones, usuarios, moderación y cobros.
-6. Proveedor agro: catálogo y cotizaciones.
-7. Agrocanje operativo.
+6. Catálogo agro y cotizaciones dentro de cuenta comercial.
+7. Agrocanje como modalidad de cobro operativa.
 8. Analítica real y reportes.
