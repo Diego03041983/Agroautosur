@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUserContext } from "@/lib/auth";
 import { leadNoteSchema } from "@/lib/validations";
 
 export async function POST(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -11,12 +11,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
     return NextResponse.json({ error: "Nota inválida", details: parsed.error.flatten() }, { status: 400 });
   }
 
-  const supabase = await createClient();
+  const { supabase, user, isStaff, isDemo } = await getCurrentUserContext();
   if (!supabase) return NextResponse.json({ ok: true, mode: "demo" }, { status: 202 });
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  if (!isStaff && !isDemo) return NextResponse.json({ error: "No autorizado" }, { status: 403 });
 
   const { error } = await supabase.from("lead_notes").insert({
     lead_id: id,

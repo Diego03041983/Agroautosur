@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { getCurrentUserContext } from "@/lib/auth";
 import { leadUpdateSchema } from "@/lib/validations";
 
 export async function PATCH(request: Request, { params }: { params: Promise<{ id: string }> }) {
@@ -10,8 +10,9 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ id
     return NextResponse.json({ error: "Estado inválido" }, { status: 400 });
   }
 
-  const supabase = await createClient();
+  const { supabase, isStaff, isDemo } = await getCurrentUserContext();
   if (!supabase) return NextResponse.json({ ok: true, mode: "demo" }, { status: 202 });
+  if (!isStaff && !isDemo) return NextResponse.json({ error: "No autorizado" }, { status: 403 });
 
   const { error } = await supabase
     .from("leads")

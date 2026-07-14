@@ -94,7 +94,7 @@ export const agroProviderPanelCards = [
 ];
 
 export const backofficeCards = [
-  { title: "Aprobaciones", text: "Unidades pendientes, proveedores, documentos y destacados.", href: "/admin/backoffice", Icon: ClipboardCheck, state: "Prioritario", functionality: "Reúne todo lo que necesita validación antes de aparecer o afectar la operación.", nextStep: "crear cola de aprobación" },
+  { title: "Aprobaciones", text: "Unidades pendientes, proveedores, documentos y destacados.", href: "/admin/publicaciones", Icon: ClipboardCheck, state: "Operativo", functionality: "Reúne publicaciones pendientes para aprobar, pausar o rechazar antes de mostrarlas.", nextStep: "sumar documentos y proveedores a la cola" },
   { title: "Usuarios", text: "Roles, perfiles, concesionarias, particulares y proveedores.", href: "/admin/backoffice", Icon: Users, state: "Base", functionality: "Administra identidad, permisos, pertenencia a organizaciones y perfiles comerciales.", nextStep: "proteger rutas por rol" },
   { title: "Cobros", text: "Pagos, suscripciones, vencimientos y conciliación.", href: "/admin/backoffice", Icon: CreditCard, state: "Modelado", functionality: "Controla ingresos por planes, publicaciones, destacados y servicios.", nextStep: "integrar pasarela de pagos" },
   { title: "Facturación", text: "Facturas, notas, impuestos y estado de emisión.", href: "/admin/backoffice", Icon: ReceiptText, state: "Modelado", functionality: "Ordena comprobantes emitidos, pendientes, pagados o vencidos.", nextStep: "definir integración fiscal" },

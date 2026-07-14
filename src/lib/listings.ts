@@ -24,6 +24,22 @@ export async function getPublishedListings(): Promise<Listing[]> {
   return data as Listing[];
 }
 
+export async function getAdminListings(status?: string): Promise<Listing[]> {
+  const supabase = await createClient();
+  if (!supabase) return demoListings;
+
+  let query = supabase
+    .from("listings")
+    .select(listingSelect)
+    .order("created_at", { ascending: false });
+
+  if (status) query = query.eq("status", status);
+
+  const { data, error } = await query;
+  if (error) return [];
+  return (data ?? []) as Listing[];
+}
+
 export async function getListingBySlug(slug: string): Promise<Listing | null> {
   const supabase = await createClient();
   if (!supabase) return demoListings.find((listing) => listing.slug === slug) ?? null;

@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { BarChart3, ClipboardCheck, LayoutDashboard, LogIn, MessageSquareText } from "lucide-react";
+import { BarChart3, ClipboardCheck, LayoutDashboard, LogIn, MessageSquareText, Newspaper } from "lucide-react";
 
 const adminLinks = [
   { label: "Dashboard", href: "/admin", Icon: LayoutDashboard },
+  { label: "Publicaciones", href: "/admin/publicaciones", Icon: Newspaper },
   { label: "CRM Leads", href: "/admin/leads", Icon: MessageSquareText },
   { label: "Backoffice", href: "/admin/backoffice", Icon: ClipboardCheck },
   { label: "Analítica", href: "/admin/analitica", Icon: BarChart3 },

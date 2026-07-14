@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 
 export function AccountForm() {
   const [mode, setMode] = useState<"signup" | "login">("signup");
+  const [userType, setUserType] = useState("particular");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -35,6 +36,7 @@ export function AccountForm() {
         document_type: formData.get("document_type"),
         document_number: formData.get("document_number"),
         user_type: formData.get("user_type"),
+        organization_name: formData.get("organization_name"),
       };
 
       const { data, error } = await supabase.auth.signUp({
@@ -84,13 +86,19 @@ export function AccountForm() {
               </label>
               <label className="grid gap-1.5 text-sm font-bold">
                 Tipo de usuario
-                <select name="user_type" className="aas-field">
+                <select name="user_type" value={userType} onChange={(event) => setUserType(event.target.value)} className="aas-field">
                   <option value="particular">Particular</option>
                   <option value="agency">Agencia / concesionaria</option>
                   <option value="producer">Productor / empresa agro</option>
                 </select>
               </label>
             </div>
+            {userType === "agency" ? (
+              <label className="grid gap-1.5 text-sm font-bold">
+                Nombre comercial de la agencia o concesionaria
+                <input name="organization_name" required placeholder="Ej: AgroAutoSur Firmat" className="aas-field" />
+              </label>
+            ) : null}
             <div className="grid gap-3 sm:grid-cols-2">
               <label className="grid gap-1.5 text-sm font-bold">
                 Documento

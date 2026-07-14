@@ -3,6 +3,7 @@ import { CalendarDays, MessageCircle, SearchX, UserRound } from "lucide-react";
 import { AdminNav } from "@/components/admin-nav";
 import { LeadStatusBadge, LeadTypeBadge } from "@/components/crm/lead-badge";
 import { SiteHeader } from "@/components/site-header";
+import { requireStaff } from "@/lib/auth";
 import { getLeads } from "@/lib/leads";
 import { getPublishedListings } from "@/lib/listings";
 import { formatDateTime, leadStatusLabels, leadStatuses, leadTypeLabels, leadTypes, leadWhatsappUrl } from "@/lib/utils";
@@ -16,6 +17,7 @@ export default async function AdminLeadsPage({
   searchParams: Promise<Record<string, string | undefined>>;
 }) {
   const params = await searchParams;
+  await requireStaff();
   const filters: LeadFilters = {
     status: (params.status ?? "") as LeadStatus | "",
     lead_type: (params.lead_type ?? "") as LeadType | "",

@@ -6,6 +6,7 @@ import { LeadStatusBadge, LeadTypeBadge } from "@/components/crm/lead-badge";
 import { LeadNoteForm } from "@/components/crm/lead-note-form";
 import { LeadStatusAction } from "@/components/crm/lead-status-action";
 import { SiteHeader } from "@/components/site-header";
+import { requireStaff } from "@/lib/auth";
 import { getLeadById } from "@/lib/leads";
 import { formatDateTime, formatListingPrices, leadTypeLabels, leadWhatsappUrl } from "@/lib/utils";
 
@@ -13,6 +14,7 @@ export const metadata = { title: "Detalle de lead" };
 
 export default async function LeadDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
+  await requireStaff();
   const lead = await getLeadById(id);
   if (!lead) notFound();
 

@@ -31,8 +31,8 @@ export default async function SellPage() {
             <aside className="grid content-start gap-4">
               <div className="rounded-xl border border-[#152018]/10 bg-[#101713] p-5 text-white shadow-[0_18px_56px_rgba(21,32,24,0.16)]">
                 <ShieldCheck className="text-[#d6a82f]" />
-                <h2 className="mt-4 text-xl font-black">Proceso de revisión</h2>
-                <p className="mt-2 text-sm leading-6 text-white/64">La unidad queda pendiente. AgroAutoSur revisa datos, fotos y condiciones antes de publicarla.</p>
+              <h2 className="mt-4 text-xl font-black">Proceso de revisión</h2>
+              <p className="mt-2 text-sm leading-6 text-white/64">La unidad se guarda como publicación real en estado pendiente. AgroAutoSur revisa datos, fotos y condiciones antes de publicarla.</p>
               </div>
               <LeadForm leadType="sell_request" sourceLabel="Quiero vender - apoyo comercial" />
             </aside>

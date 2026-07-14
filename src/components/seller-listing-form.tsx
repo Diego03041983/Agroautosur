@@ -20,6 +20,7 @@ export function SellerListingForm() {
         ...payload,
         accepts_trade_in: formData.get("accepts_trade_in") === "on",
         financing_available: formData.get("financing_available") === "on",
+        accepts_agrocanje: formData.get("accepts_agrocanje") === "on",
       }),
     });
 
@@ -145,6 +146,10 @@ export function SellerListingForm() {
         <label className="flex items-center gap-2 rounded-lg border border-[#152018]/10 bg-[#f8faf6] px-3 py-3 text-sm font-black">
           <input name="financing_available" type="checkbox" className="accent-[#1f6b43]" />
           Puede financiarse
+        </label>
+        <label className="flex items-center gap-2 rounded-lg border border-[#152018]/10 bg-[#f8faf6] px-3 py-3 text-sm font-black sm:col-span-2">
+          <input name="accepts_agrocanje" type="checkbox" className="accent-[#1f6b43]" />
+          Acepta agrocanje sujeto a cotización
         </label>
       </div>
 

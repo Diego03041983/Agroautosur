@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BadgeDollarSign, ClipboardList, Images, MessageSquareText, ShieldCheck, TrendingUp, Users } from "lucide-react";
 import { AdminNav } from "@/components/admin-nav";
 import { SiteHeader } from "@/components/site-header";
+import { requireStaff } from "@/lib/auth";
 import { getLeadMetrics } from "@/lib/leads";
 import { getPublishedListings } from "@/lib/listings";
 import { leadStatusLabels, leadTypeLabels } from "@/lib/utils";
@@ -9,6 +10,7 @@ import { leadStatusLabels, leadTypeLabels } from "@/lib/utils";
 export const metadata = { title: "Panel administrativo" };
 
 export default async function AdminPage() {
+  await requireStaff();
   const [listings, leadMetrics] = await Promise.all([getPublishedListings(), getLeadMetrics()]);
   const stats = [
     { label: "Publicaciones", value: listings.length, Icon: ClipboardList },
@@ -84,9 +86,10 @@ export default async function AdminPage() {
             </div>
           </div>
         </div>
-        <div className="mt-4 grid gap-3 md:grid-cols-3">
+        <div className="mt-4 grid gap-3 md:grid-cols-4">
           {[
             { title: "Backoffice", text: "Aprobaciones, usuarios, cobros, facturación y auditoría.", href: "/admin/backoffice", Icon: ClipboardList },
+            { title: "Publicaciones", text: "Pendientes, aprobadas, pausadas y rechazadas.", href: "/admin/publicaciones", Icon: ShieldCheck },
             { title: "Gestión de leads", text: "Estados comerciales, asignación y notas internas.", href: "/admin/leads", Icon: Users },
             { title: "Analítica", text: "Tráfico, conversión, MRR, churn, GMV y comisiones.", href: "/admin/analitica", Icon: Images },
           ].map(({ title, text, href, Icon }) => (

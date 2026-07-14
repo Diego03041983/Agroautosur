@@ -1,4 +1,5 @@
 import { ModuleDashboard } from "@/components/module-dashboard";
+import { requireStaff } from "@/lib/auth";
 import { getLeadMetrics, getLeads } from "@/lib/leads";
 import { getPublishedListings } from "@/lib/listings";
 import { analyticsCards } from "@/lib/platform-modules";
@@ -7,6 +8,7 @@ import { formatMoney } from "@/lib/utils";
 export const metadata = { title: "Analítica" };
 
 export default async function AnalyticsPage() {
+  await requireStaff();
   const [leadMetrics, leads, listings] = await Promise.all([getLeadMetrics(), getLeads(), getPublishedListings()]);
   const last30 = new Date();
   last30.setDate(last30.getDate() - 30);

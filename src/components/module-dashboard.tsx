@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Lock } from "lucide-react";
 import { AdminNav } from "@/components/admin-nav";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -14,6 +14,10 @@ type ModuleCard = {
   functionality?: string;
   nextStep?: string;
 };
+
+function isModuleAvailable(state?: string) {
+  return !state || state === "Operativo";
+}
 
 export function ModuleDashboard({
   eyebrow,
@@ -60,43 +64,72 @@ export function ModuleDashboard({
                 <span>Acción</span>
               </div>
               <div className="divide-y divide-[#152018]/8">
-                {cards.map(({ title: cardTitle, text, href, Icon, state }) => (
-                  <Link key={cardTitle} href={href} className="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-3 py-3 transition hover:bg-[#f8faf6]">
-                    <span className="flex min-w-0 items-center gap-3">
-                      <span className="grid size-8 shrink-0 place-items-center rounded-md bg-[#edf4e8] text-[#1f6b43]">
-                        <Icon size={16} />
+                {cards.map(({ title: cardTitle, text, href, Icon, state }) => {
+                  const available = isModuleAvailable(state);
+                  const content = (
+                    <>
+                      <span className="flex min-w-0 items-center gap-3">
+                        <span className={`grid size-8 shrink-0 place-items-center rounded-md ${available ? "bg-[#edf4e8] text-[#1f6b43]" : "bg-[#f0f1ed] text-[#8a9288]"}`}>
+                          <Icon size={16} />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block truncate text-sm font-black text-[#152018]">{cardTitle}</span>
+                          <span className="mt-0.5 block truncate text-xs text-[#667062]">{text}</span>
+                        </span>
                       </span>
-                      <span className="min-w-0">
-                        <span className="block truncate text-sm font-black text-[#152018]">{cardTitle}</span>
-                        <span className="mt-0.5 block truncate text-xs text-[#667062]">{text}</span>
+                      <span className={`rounded-full px-2 py-1 text-[10px] font-black uppercase tracking-[0.08em] ${available ? "bg-[#fff5d8] text-[#6f4e00]" : "bg-[#f0f1ed] text-[#667062]"}`}>
+                        {available ? state ?? "Base" : "No disponible"}
                       </span>
-                    </span>
-                    <span className="rounded-full bg-[#fff5d8] px-2 py-1 text-[10px] font-black uppercase tracking-[0.08em] text-[#6f4e00]">{state ?? "Base"}</span>
-                    <span className="inline-flex h-8 items-center gap-1.5 rounded-md border border-[#152018]/10 px-2 text-xs font-black text-[#1f6b43]">
-                      Abrir <ArrowRight size={13} />
-                    </span>
-                  </Link>
-                ))}
+                      <span className={`inline-flex h-8 items-center gap-1.5 rounded-md border border-[#152018]/10 px-2 text-xs font-black ${available ? "text-[#1f6b43]" : "text-[#667062]"}`}>
+                        {available ? "Abrir" : "Bloqueado"} {available ? <ArrowRight size={13} /> : <Lock size={13} />}
+                      </span>
+                    </>
+                  );
+
+                  return available ? (
+                    <Link key={cardTitle} href={href} className="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-3 py-3 transition hover:bg-[#f8faf6]">
+                      {content}
+                    </Link>
+                  ) : (
+                    <div key={cardTitle} className="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-3 py-3 opacity-80">
+                      {content}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>
         ) : (
           <section className="mx-auto grid max-w-7xl gap-4 px-4 py-10 sm:px-6 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
-            {cards.map(({ title: cardTitle, text, href, Icon, state }) => (
-              <Link key={cardTitle} href={href} className="group rounded-xl border border-[#152018]/10 bg-white p-5 shadow-[0_14px_42px_rgba(21,32,24,0.08)] transition hover:-translate-y-0.5 hover:border-[#1f6b43]/35 hover:shadow-[0_24px_60px_rgba(21,32,24,0.14)]">
-                <div className="flex items-start justify-between gap-3">
-                  <span className="grid size-12 shrink-0 place-items-center rounded-lg bg-[#edf4e8] text-[#1f6b43] transition group-hover:bg-[#1f6b43] group-hover:text-white">
-                    <Icon size={23} />
+            {cards.map(({ title: cardTitle, text, href, Icon, state }) => {
+              const available = isModuleAvailable(state);
+              const className = `group rounded-xl border border-[#152018]/10 bg-white p-5 shadow-[0_14px_42px_rgba(21,32,24,0.08)] transition ${available ? "hover:-translate-y-0.5 hover:border-[#1f6b43]/35 hover:shadow-[0_24px_60px_rgba(21,32,24,0.14)]" : "opacity-75"}`;
+              const content = (
+                <>
+                  <div className="flex items-start justify-between gap-3">
+                    <span className={`grid size-12 shrink-0 place-items-center rounded-lg transition ${available ? "bg-[#edf4e8] text-[#1f6b43] group-hover:bg-[#1f6b43] group-hover:text-white" : "bg-[#f0f1ed] text-[#8a9288]"}`}>
+                      <Icon size={23} />
+                    </span>
+                    <span className={`rounded-full px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.08em] ${available ? "bg-[#fff5d8] text-[#6f4e00]" : "bg-[#f0f1ed] text-[#667062]"}`}>{available ? state ?? "Base" : "No disponible"}</span>
+                  </div>
+                  <h2 className="mt-5 text-xl font-black text-[#152018]">{cardTitle}</h2>
+                  <p className="mt-2 text-sm leading-6 text-[#667062]">{text}</p>
+                  <span className={`mt-5 inline-flex items-center gap-2 text-sm font-black ${available ? "text-[#1f6b43]" : "text-[#667062]"}`}>
+                    {available ? "Abrir módulo" : "Pendiente de implementación"} {available ? <ArrowRight size={16} /> : <Lock size={16} />}
                   </span>
-                  {state ? <span className="rounded-full bg-[#fff5d8] px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.08em] text-[#6f4e00]">{state}</span> : null}
+                </>
+              );
+
+              return available ? (
+                <Link key={cardTitle} href={href} className={className}>
+                  {content}
+                </Link>
+              ) : (
+                <div key={cardTitle} className={className}>
+                  {content}
                 </div>
-                <h2 className="mt-5 text-xl font-black text-[#152018]">{cardTitle}</h2>
-                <p className="mt-2 text-sm leading-6 text-[#667062]">{text}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[#1f6b43]">
-                  Abrir módulo <ArrowRight size={16} />
-                </span>
-              </Link>
-            ))}
+              );
+            })}
           </section>
         )}
       </main>
